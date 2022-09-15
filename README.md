@@ -15,7 +15,7 @@ docker exec -it fleet_database bash
 ## Creating database tables :
 
 ```
-docker exec fleet_database sh -c 'exec mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" fleet' > ./create-table-template.sql
+docker exec -i fleet_database sh -c 'exec mysql -u root -p"$MYSQL_ROOT_PASSWORD" fleet' < ./create-table-template.sql
 ```
 
 ## Creating database dumps :
