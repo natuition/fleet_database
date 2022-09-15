@@ -3,7 +3,7 @@
 ## For deploy the database image :
 
 ```
-docker run --name fleet_database -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=fleet -dp 3306:3306 mysql:latest
+docker run --name fleet_database -v "$PWD/db_fleet_data":/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=fleet -dp 3306:3306 mysql:latest
 ```
 
 ## To enter in bash of docker :
