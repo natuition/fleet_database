@@ -12,6 +12,12 @@ docker run --name fleet_database -v "$PWD/db_fleet_data":/var/lib/mysql -e MYSQL
 docker exec -it fleet_database bash
 ```
 
+## Creating database tables :
+
+```
+docker exec fleet_database sh -c 'exec mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" fleet' > ./create-table-template.sql
+```
+
 ## Creating database dumps :
 
 ```
