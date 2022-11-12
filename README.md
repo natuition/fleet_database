@@ -12,6 +12,12 @@ docker-compose up -d --build
 docker exec -it fleet_database bash
 ```
 
+## Creating database dumps without data :
+
+```
+docker exec fleet_database sh -c 'exec mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" fleet --no-data' > ./fleet_databases_struct.sql
+```
+
 ## Creating database dumps :
 
 ```

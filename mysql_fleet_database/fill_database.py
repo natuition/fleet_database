@@ -104,7 +104,7 @@ try:
             with db.cursor(pymysql.cursors.DictCursor) as cursor:
                 datetime_start = datetime.strptime(
                     session_resume["Start time"], '%d-%m-%Y %H-%M-%S %f')
-                sql = f"INSERT INTO Vesc_statistics (sessions_id, voltage, timestamp) VALUES ({session_id}, {session_resume['Voltage at start']}, '{datetime_start.strftime('%Y-%m-%d %H:%M:%S')}');"
+                sql = f"INSERT INTO Vesc_statistics (session_id, voltage, timestamp) VALUES ({session_id}, {session_resume['Voltage at start']}, '{datetime_start.strftime('%Y-%m-%d %H:%M:%S')}');"
                 cursor.execute(sql)
 
             db.commit()
@@ -143,7 +143,7 @@ try:
                         if path[3]:
                             for extracted_weed_name, extracted_weed_value in path[3].items():
                                 if extracted_weed_name in treated_plant_dict:
-                                    sql = f"INSERT INTO Extracted_weeds (point_of_path_id, weed_type_id, number) VALUES ({point_of_path_id}, {treated_plant_dict[extracted_weed_name]}, {extracted_weed_value});"
+                                    sql = f"INSERT INTO Extracted_weeds (point_of_path_id, weed_type_id, session_id, number) VALUES ({point_of_path_id}, {treated_plant_dict[extracted_weed_name]}, {session_id}, {extracted_weed_value});"
                                     cursor.execute(sql)
 
                         point_number += 1
