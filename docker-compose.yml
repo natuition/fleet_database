@@ -1,0 +1,19 @@
+version: '3'
+services:
+  fleet_database:
+    build: ./mysql_fleet_database
+    container_name: fleet_database
+    restart: always
+    env_file:
+    - ./mysql_fleet_database/.env
+    volumes:
+        - ./mysql_fleet_database/db_fleet_data:/var/lib/mysql
+    ports:
+        - "3306:3306/tcp"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
