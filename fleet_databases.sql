@@ -133,12 +133,15 @@ CREATE TABLE
         `id` int NOT NULL AUTO_INCREMENT,
         `point_of_path_id` int NOT NULL,
         `weed_type_id` int NOT NULL,
+        `session_id` int NOT NULL,
         `number` int NOT NULL DEFAULT 1,
         PRIMARY KEY (`id`),
         KEY `Extracted_weeds_point_of_path_id__Points_of_paths_id` (`point_of_path_id`),
         KEY `Extracted_weeds_weed_type_id__Weed_types_id` (`weed_type_id`),
+        KEY `Extracted_weeds_session_id__Sessions_id` (`session_id`),
         CONSTRAINT `Extracted_weeds_point_of_path_id__Points_of_paths_id` FOREIGN KEY (`point_of_path_id`) REFERENCES `Points_of_paths` (`id`),
-        CONSTRAINT `Extracted_weeds_weed_type_id__Weed_types_id` FOREIGN KEY (`weed_type_id`) REFERENCES `Weed_types` (`id`)
+        CONSTRAINT `Extracted_weeds_weed_type_id__Weed_types_id` FOREIGN KEY (`weed_type_id`) REFERENCES `Weed_types` (`id`),
+        CONSTRAINT `Extracted_weeds_session_id__Sessions_id` FOREIGN KEY (`session_id`) REFERENCES `Sessions` (`id`)
     ) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */
@@ -158,7 +161,7 @@ LOCK TABLES `Extracted_weeds` WRITE;
 ;
 
 INSERT INTO `Extracted_weeds`
-VALUES (2, 731, 1, 1), (3, 731, 2, 3), (4, 740, 3, 2), (5, 750, 4, 6), (6, 770, 2, 10);
+VALUES (2, 731, 1, 1, 1), (3, 731, 2, 1, 3), (4, 740, 3, 1, 2), (5, 750, 4, 2, 6), (6, 770, 2, 4, 10);
 
 /*!40000 ALTER TABLE `Extracted_weeds` ENABLE KEYS */
 
